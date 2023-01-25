@@ -1,0 +1,55 @@
+﻿@{
+    ViewData["Title"] = "Create";
+}
+@model EmployeePostDto
+<div class="row">
+    <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <form class="forms-sample" method="post" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly"></div>
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" asp-for="@Model.Name" placeholder="Name">
+                        <span asp-validation-for="Name"></span>
+                    </div>
+                    <div class="form-group">
+                        <label>Position</label>
+                        <input type="text" asp-for="@Model.Position" placeholder="Position">
+                        <span asp-validation-for="Position"></span>
+
+                    </div>
+                    <div class="form-group">
+                        <label>Image</label>
+                        <input asp-for="@Model.formFile" placeholder="Image">
+                        <span asp-validation-for="formFile"></span>
+
+                    </div>
+                    @for (int i = 0; i <= 3; i++)
+                    {
+                        <div class="form-group">
+                            <label>Icon</label>
+                            <input asp-for="@Model.Icons[i].IconUrl" placeholder="Url">
+                            <span asp-validation-for="Icons[i].IconUrl"></span>
+                            <input asp-for="@Model.Icons[i].IconName" placeholder="Name">
+                            <span asp-validation-for="Icons[i].IconName"></span>
+                        </div>
+
+
+
+
+                    }
+
+                    <div class="form-check form-check-flat form-check-primary">
+                        <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input">
+                            Remember me
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary me-2">Submit</button>
+                    <button class="btn btn-light">Cancel</button>
+                </form>
+            </div>
+        </div>
+    </div>
+

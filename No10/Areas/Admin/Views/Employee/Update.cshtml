@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewData["Title"] = "Update";
+}
+@model EmployeeUpdateDto
+<div class="row">
+    <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <form class="forms-sample" method="post" enctype="multipart/form-data">
+                    <input hidden asp-for="@Model.getDto.Id" />
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" asp-for="@Model.PostDto.Name" value="@Model.getDto.Name" placeholder="Name">
+                        <span asp-validation-for="@Model.PostDto.Name"></span>
+                    </div>
+                    <div class="form-group">
+                        <label>Position</label>
+                        <input type="text" asp-for="@Model.PostDto.Position" value="@Model.getDto.Position" placeholder="Position">
+                        <span asp-validation-for="@Model.PostDto.Position"></span>
+
+                    </div>
+                    <div class="form-group">
+                        <label>Image</label>
+                        <input asp-for="@Model.PostDto.formFile" placeholder="Image">
+                        <span asp-validation-for="@Model.PostDto.formFile"></span>
+
+                    </div>
+                    @for (int i = 0; i <= 3; i++)
+                    {
+                        <div class="form-group">
+                            <label>Icon</label>
+                            <input asp-for="@Model.PostDto.Icons[i].IconUrl" value="@Model.getDto.Icons[i].IconUrl" placeholder="Url">
+                            <input asp-for="@Model.PostDto.Icons[i].IconName" value="@Model.getDto.Icons[i].IconName" placeholder="Name">
+                            <span asp-validation-for="@Model.PostDto.Icons[i]"></span>
+                        </div>
+                    }
+                    <div class="form-check form-check-flat form-check-primary">
+                        <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input">
+                            Remember me
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary me-2">Submit</button>
+                    <button class="btn btn-light">Cancel</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
